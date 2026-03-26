@@ -1,9 +1,13 @@
-import React from 'react';
+import React from "react";
+import SingleSelectedPlayer from "../SingleSelectedPlayer/SingleSelectedPlayer";
 
-const SelectedPlayers = () => {
+const SelectedPlayers = ({ selected }) => {
+    // console.log(selected)
     return (
-        <div>
-            <h2>Selected players are coming soon</h2>
+        <div className="grid gap-6">
+            {
+                selected.map(selectedPlayer => <SingleSelectedPlayer key={selectedPlayer.id} selectedPlayer={selectedPlayer} ></SingleSelectedPlayer>)
+            }
         </div>
     );
 };

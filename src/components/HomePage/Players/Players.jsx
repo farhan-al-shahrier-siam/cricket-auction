@@ -6,22 +6,24 @@ const Players = ({ playersPromise, setCoin, coin }) => {
     const players = use(playersPromise);
     // console.log(players)
 
+    const [selected, setSelected] = useState([])
+
     const [toggle, setToggle] = useState(true);
     return (
         <div className="container mx-auto my-16">
             <div className="flex justify-between items-center mb-16">
-                <div>{toggle === true ? <h2 className="font-bold text-3xl">Available Players</h2> : <h2 className="font-bold text-3xl">Selected Players(0/{players.length})</h2>}</div>
+                <div>{toggle === true ? <h2 className="font-bold text-3xl">Available Players</h2> : <h2 className="font-bold text-3xl">Selected Players({selected.length}/{players.length})</h2>}</div>
                 <div>
                     <button onClick={() => setToggle(true)} className={`btn rounded-r-none ${toggle === true ? "bg-[#E7FE29]" : "bg-white"} rounded-l-xl`}>
                         Available
                     </button>
                     <button onClick={() => setToggle(false)} className={`btn rounded-l-none ${toggle === false ? "bg-[#E7FE29]" : "bg-white"} rounded-r-xl`}>
-                        Selected (0)
+                        Selected ({selected.length})
                     </button>
                 </div>
             </div>
 
-            {toggle === true ? <AvailablePlayers coin={coin} setCoin={setCoin} players={players}></AvailablePlayers> : <SelectedPlayers></SelectedPlayers>}
+            {toggle === true ? <AvailablePlayers selected={selected} setSelected={setSelected} coin={coin} setCoin={setCoin} players={players}></AvailablePlayers> : <SelectedPlayers selected= {selected}></SelectedPlayers>}
         </div>
     );
 };

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { BiSolidFlag } from "react-icons/bi";
 import { TbUserBolt } from "react-icons/tb";
 
-const Card = ({ player, setCoin, coin }) => {
+const Card = ({ player, setCoin, coin, selected, setSelected }) => {
     const [isSelected, setIsSelected] = useState(false);
 
     const handleChosePlayer = () => {
@@ -12,6 +12,7 @@ const Card = ({ player, setCoin, coin }) => {
             setIsSelected(true);
             setCoin(coin - player.price);
             alert(`${player.playerName} is selected`);
+            setSelected([...selected, player])
         } else {
             alert(`Not enough balance...`);
         }
