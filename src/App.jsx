@@ -1,4 +1,4 @@
-import { Suspense } from "react";
+import { Suspense, useState } from "react";
 import "./App.css";
 import Banner from "./components/HomePage/Banner/Banner";
 import Players from "./components/HomePage/Players/Players";
@@ -11,14 +11,15 @@ const fetchPlayer = async () => {
 
 function App() {
     const playersPromise = fetchPlayer();
+    const [coin, setCoin] = useState(10000);
     return (
         <>
-            <Navbar></Navbar>
+            <Navbar coin={coin}></Navbar>
 
             <Banner></Banner>
 
             <Suspense fallback={<span className="loading loading-bars loading-xl"></span>}>
-                <Players playersPromise={playersPromise}></Players>
+                <Players coin={coin} setCoin={setCoin} playersPromise={playersPromise}></Players>
             </Suspense>
         </>
     );

@@ -2,7 +2,7 @@ import React from "react";
 import Currency from "../../assets/Currency.png";
 import Logo from "../../assets/logo.png"
 
-const Navbar = () => {
+const Navbar = ({coin}) => {
     return (
         <div className="navbar bg-base-100 shadow-sm items-center justify-between container mx-auto">
             <div className="navbar-start">
@@ -30,7 +30,7 @@ const Navbar = () => {
                 </div>
                 <a className="w-9 h-9"><img src={Logo} alt="" /></a>
             </div>
-            <div className="flex items-end">
+            <div className="flex items-center">
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
                         <li>
@@ -48,7 +48,7 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div>
-                    <button className="btn flex items-center justify-between gap-2">0 Coin <img src={Currency} alt="" /></button>
+                    <button className="btn flex items-center justify-between gap-2">{coin} Coin <img src={Currency} alt="" /></button>
                 </div>
             </div>
         </div>
