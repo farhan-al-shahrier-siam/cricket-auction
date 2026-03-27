@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { BiSolidFlag } from "react-icons/bi";
 import { TbUserBolt } from "react-icons/tb";
+import { toast } from "react-toastify";
 
 const Card = ({ player, setCoin, coin, selected, setSelected }) => {
     const [isSelected, setIsSelected] = useState(false);
@@ -11,10 +12,10 @@ const Card = ({ player, setCoin, coin, selected, setSelected }) => {
         if (tempCoin >= 0) {
             setIsSelected(true);
             setCoin(coin - player.price);
-            alert(`${player.playerName} is selected`);
+            toast.success(`${player.playerName} is selected`);
             setSelected([...selected, player])
         } else {
-            alert(`Not enough balance...`);
+            toast.error(`Not enough balance...`);
         }
     };
 

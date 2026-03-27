@@ -1,5 +1,6 @@
 import React from "react";
 import SingleSelectedPlayer from "../SingleSelectedPlayer/SingleSelectedPlayer";
+import { toast } from "react-toastify";
 
 const SelectedPlayers = ({ selected, setSelected, coin, setCoin }) => {
     const handleDelete = (deletePlayer) => {
@@ -8,6 +9,7 @@ const SelectedPlayers = ({ selected, setSelected, coin, setCoin }) => {
         const filteredPlayer = selected.filter((player) => deletePlayer.playerName != player.playerName);
         setSelected(filteredPlayer);
         setCoin(coin + deletePlayer.price);
+        toast.warning(`${deletePlayer.playerName} is deleted...`)
     };
     // console.log(selected)
     return (
